@@ -1,0 +1,114 @@
+Nesta atividade nós utilizaremos as classes que foram criadas anteriormente, fazendo uma pequena alteração em uma delas.
+
+Bora começar? ; )
+
+Tarefas
+Prática!
+1. Exercício - modelando classe Carrinho:
+Modele uma classe Carrinho que receba como parâmetros no construtor as seguintes propriedades:
+
+ValorTotal - deve receber o valor total da soma dos preços de todos os produtos;
+qtdProdutos - deve receber a quantidade total de produtos no carrinho;
+valorFrete - deve inicializar com (50) reais.
+Além dessas propriedades, também receberá uma propriedade que não será passada como parâmetro no construtor, mas será definida como default na classe, chamada itensCarrinho, que vai conter um array de objetos.
+
+Cada objeto representa um item do carrinho, contendo informações como o nome, valor e disponibilidade do item.
+
+this.itensCarrinho = [
+	{nome: "Caderno" , preco: 10, disponivel: true },
+	{nome: "Estojo", preco: 30 , disponivel: false },
+	{nome: "Mochila", preco: 70 , disponivel: true },
+	{nome: "Lapiseira", preco: 5 , disponivel: true },
+	{nome: "Fichario", preco: 50 , disponivel: true },
+	{nome: "Borracha", preco: 3 , disponivel: false },
+	{nome: "Lancheira", preco: 20 , disponivel: true },
+]   
+Métodos:
+
+calculaPrecoPromocional - Deve alterar o valor da propriedade valorFrete para (0) reais, caso a soma do preço de todos os produtos que estão disponível seja maior ou igual á 150 reais.
+verificarDisponibilidade - Deve retornar um array de produtos, com todos os produtos que estão com a propriedade disponível: igual a false
+2. Exercício - modelando classe Estoque:
+Modele uma classe chamada Estoque, que precisa receber como parâmetros no construtor exatamente as seguintes propriedades:
+
+quantidadeMinimaEstoque
+quantidadeMaximaEstoque
+Um getter e um setter para cada atributo;
+
+Além dessas propriedades, também receberá uma propriedade que não será passada como parâmetro no construtor, mas será definida como default na classe, chamada itensEstoque, que vai conter um array de objetos.
+
+Cada objeto representa um item, contendo informações como o nome, valor e disponibilidade do item.
+
+this.itensEstoque = {
+    eletronicos:[
+        {id:1,nome: "Tv" , preco:1200, estoque:80},
+        {id:2,nome: "Computadores",  preco:3000, estoque:100},
+        {id:3,nome: "Celulares",  preco:800, estoque:54},
+        {id:4,nome: "Fones",preco:5,  estoque:41},
+        {id:5,nome: "Webcam", preco:50, estoque:36},
+        {id:6,nome: "Mouse", preco:3,  estoque:354},
+        {id:7,nome: "Tablet",preco:20, estoque:150},
+        {id:8,nome: "Mousepads",   preco:2, estoque:1000},
+        {id:9,nome: "Headsets",preco:35, estoque:80},
+        {id:10,nome: "Impressoras", preco:1, estoque:50},
+        {id:12,nome: "No-breaks", preco:14, estoque:36},
+        {id:13,nome: "Memória ram", preco:3, estoque:12},
+    ],
+    materialEscolar:[
+        {id:1,nome: "Caderno" , preco:10, estoque:80},
+        {id:2,nome: "Estojo",   preco:30, estoque:100},
+        {id:3,nome: "Mochila",  preco:70, estoque:54},
+        {id:4,nome: "Lapiseira",preco:5,  estoque:32},
+        {id:5,nome: "Fichario", preco:50, estoque:20},
+        {id:6,nome: "Borracha", preco:3,  estoque:85},
+        {id:7,nome: "Lancheira",preco:20, estoque:100},
+        {id:8,nome: "Caneta",   preco:2, estoque:1000},
+        {id:9,nome: "Cola branca",preco:35, estoque:250},
+        {id:10,nome: "Borracha", preco:1, estoque:400},
+        {id:11,nome: "Lápis de cor", preco:14, estoque:63},
+        {id:12,nome: "Apontador", preco:3, estoque:5},
+    ],
+    automotivo:[],
+    cozinha:[
+        {id:1,nome: "Panela" , preco:10, estoque:80},
+        {id:2,nome: "Cafeteira",   preco:30, estoque:100},
+        {id:3,nome: "Louça",  preco:70, estoque:54},
+        {id:4,nome: "Copos",preco:5,  estoque:32},
+        {id:5,nome: "Fogão", preco:50, estoque:20},
+        {id:6,nome: "Geladeira", preco:1, estoque:400},
+        {id:7,nome: "Abridor de garrafa", preco:14, estoque:63},
+        {id:8,nome: "Forno elétrico", preco:3, estoque:5},
+    ]
+    petShop:[
+        {id:1,nome: "Tapete Higiênico" , preco:10, estoque:80},
+    ],
+
+}
+Metodos:
+
+verificaEstoque - Deve receber um parâmetro categoria eletrônicos ou materialEscolar, deve executar um filtro e retornar um array com todos os produtos abaixo ou igual o valor do propriedade quantidadeMinimaEstoque. Caso não seja passado nenhuma categoria como parâmetro, o filtro deve ser executado em todas as categorias existentes em itensEstoque, retornando cada produtos abaixo do estoque, separado por categoria.
+OBS: Nesse exemplo, temos apenas 5 categorias, o método deve ser dinâmico independente da quantidade de categorias., atendendo todos os casos.
+
+adicionarItem - Deve receber dois parâmetros, um deles um objeto - o item outro, a categoria, exemplo:({nome: , preco: , estoque: }, eletrônicos). Deve, adicionar o produto no array de itens, de acordo com a categoria passada como parâmetro.
+Verificações obrigatórias:
+
+- Deve verificar se o produto já existe no estoque, se sim apenas incremente o valor do estoque. Retorne true
+- Deve adicionar o produto, caso o produto não seja existente no estoque return true
+- Deve verificar se a quantidade de estoque do produto é superior a quantidadeMinimaEstoque, caso contrário retorne false
+removerItem - Deve receber dois parâmetros, um deles um id - inteiro outro, a categoria, exemplo:(12, eletronicos). Deve, remover o produto no array de itens, de acordo com a categoria passada como parâmetro.
+Verificações obrigatórias:
+
+- Deve verificar se o produto é existe no estoque, se sim apenas remova o produto do estoque. Retorne true
+- Caso o produto não seja existente no estoque return false
+pesquisarItem - Deve receber dois parâmetros, um deles um id - inteiro outro, a categoria, exemplo:(12, eletronicos). Deve, retornar o produto no array de itens, de acordo com a categoria passada como parâmetro.
+Verificações obrigatórias:
+
+- Deve verificar se o produto é existe no estoque, se sim apenas retorne o produto do estoque.
+- Caso o produto não seja existente no estoque return false
+atualizarEstoque - Deve receber 3 parâmetros, um deles um id - inteiro outro, a categoria e valor estoque, exemplo:(12, eletronicos, 20). Deve, identificar o produto através do id e atualizar a propriedade estoque do produto de acordo com o valor passado.
+Verificações obrigatórias:
+
+- Deve verificar se o produto é existente no estoque, se sim atualize a propriedade estoque, e retorne o valor atual da propriedade estoque do produto
+- Caso o produto não seja existente no estoque return false
+- Deve verificar se a quantidade de estoque do produto é superior a quantidadeMinimaEstoque, caso contrário retorne false
+Conclusão
+Na lista de hoje praticamos Programação Orientada a Objetos da melhor forma, com repetição! Bons estudos! :-D
