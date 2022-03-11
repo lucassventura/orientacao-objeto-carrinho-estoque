@@ -55,8 +55,8 @@ class Estoque {
             {id:8,nome: "Mousepads",   preco:2, estoque:1000},
             {id:9,nome: "Headsets",preco:35, estoque:80},
             {id:10,nome: "Impressoras", preco:1, estoque:50},
-            {id:12,nome: "No-breaks", preco:14, estoque:36},
-            {id:13,nome: "Memória ram", preco:3, estoque:12},
+            {id:11,nome: "No-breaks", preco:14, estoque:36},
+            {id:12,nome: "Memória ram", preco:3, estoque:12},
         ],
         materialEscolar:[
             {id:1,nome: "Caderno" , preco:10, estoque:80},
@@ -109,15 +109,72 @@ class Estoque {
            return Object.fromEntries(outroArray)
 
         }           
-    } 
-}   
-    // adicionarItem(){};
-    // removerItem(){};
-    // pesquisarItem(){};
-    // atualizarEstoque(){};
-    
- 
+    }
+    adicionarItem(item, categoria) {
+        
+        let retornoDaBusca;
+        
+        switch (categoria){
+        case "eletronicos":
+            retornoDaBusca = this.itensEstoque.eletronicos.find(produto => produto.nome === item.nome);
+            
+            if(retornoDaBusca === undefined){
+                this.itensEstoque.eletronicos.push({id: this.itensEstoque.eletronicos.length + 1 ,...item});                
+            }else{
+                retornoDaBusca.estoque += item.estoque;               
+            };
+            return true;
+        
+        case "materialEscolar":
+            retornoDaBusca = this.itensEstoque.materialEscolar.find(produto => produto.nome === item.nome);
+            
+            if(retornoDaBusca === undefined){
+                this.itensEstoque.materialEscolar.push({id: this.itensEstoque.materialEscolar.length + 1 ,...item})               
+            }else{
+                retornoDaBusca.estoque += item.estoque;               
+            }
+            return true;
 
-let estoque = new Estoque (50, 100);
+        case "automotivo":
+            retornoDaBusca = this.itensEstoque.automotivo.find(produto => produto.nome === item.nome);
+            
+            if(retornoDaBusca === undefined){
+                this.itensEstoque.automotivo.push({id: this.itensEstoque.automotivo.length + 1 ,...item});                
+            }else{
+                retornoDaBusca.estoque += item.estoque;                
+            }
+            return true;
+            
+        case "cozinha":
+            retornoDaBusca = this.itensEstoque.cozinha.find(produto => produto.nome === item.nome);
+            
+            if(retornoDaBusca === undefined){
+                this.itensEstoque.cozinha.push({id: this.itensEstoque.cozinha.length + 1 ,...item});                
+            }else{
+                retornoDaBusca.estoque += item.estoque;                
+            }
+            return true;
+            
+        case "petShop":   
+        retornoDaBusca = this.itensEstoque.petShop.find(produto => produto.nome === item.nome);
+            
+        if(retornoDaBusca === undefined){
+            this.itensEstoque.petShop.push({id: this.itensEstoque.petShop.length + 1 ,...item});                
+        }else{
+            retornoDaBusca.estoque += item.estoque;               
+        }
+        return true;
+        
+        };
+    };
+}
 
-console.log(estoque.verificaEstoque());
+// Testes - Parte 2
+
+// let estoque = new Estoque (1000, 2000);
+
+// console.log(estoque.verificaEstoque("materialEscolar"))
+// console.log(estoque.adicionarItem({nome: 'Agenda', preco: 5, estoque:65}, "materialEscolar"))
+// console.log(estoque.verificaEstoque("materialEscolar"))
+
+
